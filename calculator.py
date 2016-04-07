@@ -8,108 +8,132 @@ calculator program yourself in this file.
 from arithmetic import *
 
 
-# Your code goes here
-
-
 def tokenizing(user_input):
     """tokenizes user input"""
-
+    user_input = user_input.rstrip()
     input_list = user_input.split(" ")
     return input_list
 
-# for testing!
-#print tokenizing('+ 2 2')
+
 print "Enter mathematical operation in prefix notation:"
 while True:
     user_input = raw_input("> ")
     user_list = tokenizing(user_input)
     #assigns 'operator' from user_list
-    operator = user_list[0]
-    # #assigns 'num1' from user_list WHERE APPLICABLE
-    # if len(user_list) >= 2: 
-    #     num1 = user_list[1]
-    # #assigns 'num2' from user_list WHERE APPLICABLE
-    # if len(user_list) == 3:
-    #     num2 = user_list[2]    
+    operator = user_list[0] 
     
     #These are the mathematical operations
-    if operator == '+':
-        total = int(user_list[1])
-        for num in user_list[2:]:
-            if num[0] == '-':
-                num = num[1:]
-            else:
-                pass
-            if num.isdigit():
-                total += int(num)
-            else:
-                print "That's not a valid input. Try again."
-            # else:
-            #     if num.isdigit():
-            #         total += int(num)
-            #     else:
-            #         print "That's not a valid input. Try again."
-        print total
-    
-    elif operator == '-':
-        total = int(user_list[1])
-        for num in user_list[2:]:
-            if num.isdigit():
-                total -= int(num)
-            else:
-                print "That's not a valid input. Try again."
-        print total
-    
-    elif operator == '*':
-        total = int(user_list[1])
-        for num in user_list[2:]:
-            if num.isdigit():
-                total *= int(num)
-            else:
-                print "That's not a valid input. Try again."
-        print total
-    
-    elif operator == '/':
-        total = float(user_list[1])
-        for num in user_list[2:]:
-            if num.isdigit():
-                total /= float(num)
-            else:
-                print "That's not a valid input. Try again."
-        print total
-    
-    elif operator == 'square':
-        num1 = user_list[1]
-        if len(user_list) > 2 or not num.isdigit():
-            print "That's not a valid input. Try again."
-        else:
-            print float(num1) ** 2
 
-    
-    elif operator == 'cube':
-        num1 = user_list[1]
-        if len(user_list) > 2 or not num.isdigit():
+    # Addition
+    if operator == '+':
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = int(total)
+                num = int(num)
+                total += int(num)
+            
+            print total
+        
+        except ValueError:
             print "That's not a valid input. Try again."
-        else:
-            print float(num1) ** 3
+            print "This is the problem!"
+            
+    # Subtraction
+    elif operator == '-':
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = int(total)
+                num = int(num)
+                total -= int(num)
+            
+            print total
+        
+        except ValueError:
+            print "That's not a valid input. Try again."
     
-    elif operator == 'pow':
-        total = float(user_list[1])
-        for num in user_list[2:]:
-            if num.isdigit():
+    # Multiplication
+    elif operator == '*':
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = int(total)
+                num = int(num)
+                total *= int(num)
+            
+            print total
+        
+        except ValueError:
+            print "That's not a valid input. Try again."
+
+    # Division
+    elif operator == '/':
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = float(total)
+                num = float(num)
+                total /= float(num)
+            
+            print total
+        
+        except ValueError:
+            print "That's not a valid input. Try again."
+    
+    # 2nd Power
+    elif operator == 'square':
+        total = user_list[1]
+        if len(user_list) == 2:
+            try: 
+                num = user_list[1]
+                print float(num) ** 2
+                   
+            except ValueError:
+                print "That's not a valid input. Try again."            
+        else: 
+            print "That's not a valid input. Try again."            
+
+    # 3rd Power
+    elif operator == 'cube':
+        total = user_list[1]
+        if len(user_list) == 2:
+            try: 
+                num = user_list[1]
+                print float(num) ** 3
+                   
+            except ValueError:
+                print "That's not a valid input. Try again."            
+        else: 
+            print "That's not a valid input. Try again."     
+    
+    # Nth Power
+    elif operator == 'pow':  
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = float(total)
+                num = float(num)
                 total = total ** float(num)
-            else:
-                print "That's not a valid input. Try again."
-        print total
-    
+            
+            print total
+        
+        except ValueError:
+            print "That's not a valid input. Try again."
+
+    # Modulo
     elif operator == 'mod':
-        total = int(user_list[1])
-        for num in user_list[2:]:
-            if num.isdigit():
+        total = user_list[1]
+        try: 
+            for num in user_list[2:]:
+                total = int(total)
+                num = int(num)
                 total = total % int(num)
-            else:
-                print "That's not a valid input. Try again."
-        print total    
+            
+            print total
+        
+        except ValueError:
+            print "That's not a valid input. Try again."
     
     #Allows user to quit
     elif operator == "q":
@@ -119,9 +143,3 @@ while True:
     #Catches incorrect inputs
     else:
         print "That's not a valid input. Try again."
-
-
-#add try/except for errors for strings
-
-
-
