@@ -25,24 +25,20 @@ while True:
     #These are the mathematical operations
 
     # Addition
-    if operator == '+':
-        total = user_list[1]
-        try: 
+    try:
+        if operator == '+':
+            total = user_list[1]
+       
             for num in user_list[2:]:
                 total = int(total)
                 num = int(num)
                 total += int(num)
             
             print total
-        
-        except ValueError:
-            print "That's not a valid input. Try again."
-            print "This is the problem!"
-            
-    # Subtraction
-    elif operator == '-':
-        total = user_list[1]
-        try: 
+                     
+        # Subtraction
+        elif operator == '-':
+            total = user_list[1]
             for num in user_list[2:]:
                 total = int(total)
                 num = int(num)
@@ -50,13 +46,9 @@ while True:
             
             print total
         
-        except ValueError:
-            print "That's not a valid input. Try again."
-    
-    # Multiplication
-    elif operator == '*':
-        total = user_list[1]
-        try: 
+        # Multiplication
+        elif operator == '*':
+            total = user_list[1]
             for num in user_list[2:]:
                 total = int(total)
                 num = int(num)
@@ -64,82 +56,62 @@ while True:
             
             print total
         
-        except ValueError:
-            print "That's not a valid input. Try again."
-
-    # Division
-    elif operator == '/':
-        total = user_list[1]
-        try: 
+        # Division
+        elif operator == '/':
+            total = user_list[1]
             for num in user_list[2:]:
                 total = float(total)
                 num = float(num)
                 total /= float(num)
-            
+                
             print total
-        
-        except ValueError:
-            print "That's not a valid input. Try again."
-    
-    # 2nd Power
-    elif operator == 'square':
-        total = user_list[1]
-        if len(user_list) == 2:
-            try: 
+
+        # 2nd Power
+        elif operator == 'square':
+            total = user_list[1]
+            if len(user_list) == 2:
                 num = user_list[1]
                 print float(num) ** 2
-                   
-            except ValueError:
+                       
+            else: 
                 print "That's not a valid input. Try again."            
-        else: 
-            print "That's not a valid input. Try again."            
 
-    # 3rd Power
-    elif operator == 'cube':
-        total = user_list[1]
-        if len(user_list) == 2:
-            try: 
+        # 3rd Power
+        elif operator == 'cube':
+            total = user_list[1]
+            if len(user_list) == 2:
                 num = user_list[1]
                 print float(num) ** 3
-                   
-            except ValueError:
-                print "That's not a valid input. Try again."            
-        else: 
-            print "That's not a valid input. Try again."     
-    
-    # Nth Power
-    elif operator == 'pow':  
-        total = user_list[1]
-        try: 
+            else: 
+                print "That's not a valid input. Try again."     
+        
+        # Nth Power
+        elif operator == 'pow':  
+            total = user_list[1]
             for num in user_list[2:]:
                 total = float(total)
                 num = float(num)
                 total = total ** float(num)
             
             print total
-        
-        except ValueError:
-            print "That's not a valid input. Try again."
-
-    # Modulo
-    elif operator == 'mod':
-        total = user_list[1]
-        try: 
+            
+        # Modulo
+        elif operator == 'mod':
+            total = user_list[1]
             for num in user_list[2:]:
                 total = int(total)
                 num = int(num)
                 total = total % int(num)
-            
+        
             print total
         
-        except ValueError:
+        #Allows user to quit
+        elif operator == "q":
+            print "Goodbye!"
+            break
+        
+        #Catches incorrect inputs
+        else:
             print "That's not a valid input. Try again."
-    
-    #Allows user to quit
-    elif operator == "q":
-        print "Goodbye!"
-        break
-    
-    #Catches incorrect inputs
-    else:
+    except ValueError:
         print "That's not a valid input. Try again."
